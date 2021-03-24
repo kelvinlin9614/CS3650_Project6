@@ -1,6 +1,5 @@
 import os
 import re
-import sys
 
 
 class TableSymbol:
@@ -163,14 +162,14 @@ def write_to_file(fname):
         parser.parseFile(fname)
 
 
-def main(argv):
-    if len(argv) == 1:
-        write_to_file(argv[0])
+def main():
+    filename = input("Enter asm file name: ")
+    filename_last_four_str = filename[-4:]
+    if filename_last_four_str == ".asm":
+        write_to_file(filename)
     else:
-        print("Wrong input")
-        print("Usage: HackAssembler.py <filename>.asm")
-        sys.exit(1)
+        print("invalid!")
+        print("Usage: <filename>.asm")
 
 
-if __name__ == '__main__':
-    main(sys.argv[1:])
+main()
